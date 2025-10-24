@@ -7,27 +7,25 @@ interface ICommand
     void Undo();
 }
 
-// Устройства
 class Light
 {
-    public void On() => Console.WriteLine("[Свет] включен");
-    public void Off() => Console.WriteLine("[Свет] выключен");
+    public void On() => Console.WriteLine("Свет включен");
+    public void Off() => Console.WriteLine("Свет выключен");
 }
 
 class Door
 {
-    public void Open() => Console.WriteLine("[Дверь] открыта");
-    public void Close() => Console.WriteLine("[Дверь] закрыта");
+    public void Open() => Console.WriteLine("Дверь открыта");
+    public void Close() => Console.WriteLine("Дверь закрыта");
 }
 
 class Thermostat
 {
     private int temperature = 22;
-    public void Increase() { temperature++; Console.WriteLine("[Термостат] Температура увеличена до " + temperature + "°C"); }
-    public void Decrease() { temperature--; Console.WriteLine("[Термостат] Температура уменьшена до " + temperature + "°C"); }
+    public void Increase() { temperature++; Console.WriteLine(" Температура увеличена до " + temperature + "C"); }
+    public void Decrease() { temperature--; Console.WriteLine(" Температура уменьшена до " + temperature + "C"); }
 }
 
-// Конкретные команды
 class LightOnCommand : ICommand
 {
     private Light light;
@@ -68,7 +66,6 @@ class TempUpCommand : ICommand
     public void Undo() => t.Decrease();
 }
 
-// Invoker
 class SmartHome
 {
     private Stack<ICommand> history = new Stack<ICommand>();
@@ -226,3 +223,4 @@ class Program
         Console.WriteLine("\n Конец программы ");
     }
 }
+
